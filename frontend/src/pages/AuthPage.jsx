@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { Scissors } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
 import { Button, Input, ErrorState } from "../components/ui.jsx";
+import logo from "../../assets/logo_x.png";
 export default function AuthPage() {
   const [mode, setMode] = useState("login"),
     [form, setForm] = useState({
@@ -13,6 +14,7 @@ export default function AuthPage() {
     }),
     [error, setError] = useState(""),
     [loading, setLoading] = useState(false),
+    [showPassword, setShowPassword] = useState(false),
     { user, login, register } = useAuth(),
     navigate = useNavigate(),
     location = useLocation();
@@ -43,10 +45,16 @@ export default function AuthPage() {
   return (
     <section className="grid min-h-[calc(100svh-5rem)] bg-paper lg:grid-cols-2">
       <div className="hidden bg-brand p-12 text-white lg:flex lg:flex-col lg:justify-between">
-        <Scissors className="size-10" />
+        <span className="grid size-16 overflow-hidden bg-blue-950">
+          <img
+            src={logo}
+            alt="Logo X Studio Barber"
+            className="size-full scale-[1.75] object-cover"
+          />
+        </span>
         <div>
           <p className="text-xs font-bold uppercase tracking-[.3em] text-blue-200">
-            Projeto X
+            X Studio Barber
           </p>
           <h1 className="display mt-5 text-8xl">
             Seu próximo corte começa aqui.
@@ -114,7 +122,7 @@ export default function AuthPage() {
             <Input
               label="Senha"
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               autoComplete={
                 mode === "login" ? "current-password" : "new-password"
               }
@@ -122,6 +130,21 @@ export default function AuthPage() {
               minLength={mode === "register" ? 8 : 1}
               value={form.password}
               onChange={change}
+              endAdornment={
+                <button
+                  type="button"
+                  className="focus-ring rounded p-1 text-black/55 transition hover:text-brand"
+                  onClick={() => setShowPassword((visible) => !visible)}
+                  aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+                  aria-pressed={showPassword}
+                >
+                  {showPassword ? (
+                    <EyeOff className="size-5" />
+                  ) : (
+                    <Eye className="size-5" />
+                  )}
+                </button>
+              }
             />
             {error && <ErrorState message={error} />}
             <Button type="submit" loading={loading} className="w-full">

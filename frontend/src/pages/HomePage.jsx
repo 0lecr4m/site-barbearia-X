@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowUpRight, Quote, Star } from "lucide-react";
-import hero from "../assets/barbershop-hero.png";
+import hero from "../../assets/pagina_inicial_hero-v2.png";
 import { Button, Loading, ErrorState, EmptyState } from "../components/ui.jsx";
 import ServiceCard from "../components/ServiceCard.jsx";
 import BarberCard from "../components/BarberCard.jsx";
@@ -69,13 +69,17 @@ export default function HomePage() {
           <div className="border-l-4 border-brand pl-6 sm:pl-10">
             <Quote className="size-8 text-brand" />
             <p className="mt-6 text-xl font-medium leading-9 sm:text-2xl">
-              [Placeholder institucional: conte aqui a história da barbearia,
-              sua conexão com a cultura Hip-Hop e a experiência que deseja
-              oferecer.]
+              O cabelo black carrega memória, identidade e expressão. Dos
+              estilos afro às linguagens criadas nas ruas, cada forma de usar o
+              cabelo conta uma história de presença, criatividade e
+              pertencimento.
             </p>
             <p className="mt-6 text-sm leading-6 text-black/55">
-              Este conteúdo é provisório e deve ser substituído pelas
-              informações reais da marca.
+              Em uma barbearia black, essa cultura continua viva no cuidado, na
+              conversa, na música e no respeito por cada textura. Por isso, a
+              experiência vai além do corte: é um espaço para reconhecer a
+              própria imagem, fortalecer a autoestima e sair com um estilo que
+              realmente representa quem você é.
             </p>
           </div>
         </div>

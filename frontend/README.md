@@ -1,4 +1,4 @@
-# Projeto X Frontend
+# X Studio Barber Frontend
 
 Interface React + Tailwind para a API em `../backend`.
 

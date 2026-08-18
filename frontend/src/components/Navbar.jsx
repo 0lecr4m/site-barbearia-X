@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Scissors, UserRound } from "lucide-react";
+import { Menu, X, UserRound } from "lucide-react";
 import { Button } from "./ui.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
+import logo from "../../assets/logo_x.png";
 const links = [
   ["Início", "/#inicio"],
   ["Sobre nós", "/#sobre"],
@@ -18,14 +19,18 @@ export default function Navbar() {
       <div className="container-x flex h-20 items-center justify-between">
         <Link
           to="/"
-          aria-label="Projeto X - início"
+          aria-label="X Studio Barber - início"
           className="focus-ring flex items-center gap-3"
         >
-          <span className="grid size-10 place-items-center bg-brand">
-            <Scissors className="size-5" />
+          <span className="grid size-11 overflow-hidden bg-brand">
+            <img
+              src={logo}
+              alt=""
+              className="size-full scale-[1.75] object-cover"
+            />
           </span>
-          <span className="font-display text-2xl uppercase tracking-wider">
-            Projeto X
+          <span className="font-display text-xl uppercase tracking-wider sm:text-2xl">
+            X Studio Barber
           </span>
         </Link>
         <nav

@@ -24,14 +24,21 @@ export function Button({
     </button>
   );
 }
-export function Input({ label, error, ...props }) {
+export function Input({ label, error, endAdornment, ...props }) {
   return (
     <label className="grid gap-2 text-sm font-semibold">
       {label}
-      <input
-        className="focus-ring min-h-12 border border-black/20 bg-white px-4 font-normal placeholder:text-black/35"
-        {...props}
-      />
+      <span className="relative">
+        <input
+          className={`focus-ring min-h-12 w-full border border-black/20 bg-white px-4 font-normal placeholder:text-black/35 ${endAdornment ? "pr-12" : ""}`}
+          {...props}
+        />
+        {endAdornment && (
+          <span className="absolute inset-y-0 right-0 flex items-center pr-3">
+            {endAdornment}
+          </span>
+        )}
+      </span>
       {error && <span className="text-xs text-red-700">{error}</span>}
     </label>
   );

@@ -1,12 +1,27 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import orlandoImage from "../../assets/orlando_img.jpg";
+import batistaImage from "../../assets/batista_img.jpg";
+import potterImage from "../../assets/potter_img.jpg";
+import xamImage from "../../assets/xam_img.png";
+
+const teamImages = {
+  ORLANDO: orlandoImage,
+  "CARLOS BATISTA": batistaImage,
+  POTTER: potterImage,
+  XAM: xamImage,
+};
+
 export default function BarberCard({ professional, index }) {
+  const normalizedName = professional.display_name.trim().toUpperCase();
+  const image = teamImages[normalizedName] || professional.photo_url;
+
   return (
     <article className="group relative overflow-hidden bg-zinc-900 text-white">
       <div className="aspect-[4/5] bg-gradient-to-br from-zinc-700 to-black">
-        {professional.photo_url ? (
+        {image ? (
           <img
-            src={professional.photo_url}
+            src={image}
             alt={`Retrato de ${professional.display_name}`}
             className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
           />
