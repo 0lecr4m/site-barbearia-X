@@ -1,0 +1,5 @@
+import{Router}from"express";import{appointmentController as c}from"../controllers/appointmentController.js";import{authenticate,authorize,authorizeStaffOwner}from"../middlewares/auth.js";import{validate}from"../middlewares/validate.js";import{asyncHandler as a}from"../utils/asyncHandler.js";import{availabilitySchema,createAppointmentSchema,appointmentIdSchema,rescheduleSchema,cancelSchema,agendaSchema}from"../validators/appointmentSchemas.js";
+export const appointmentRoutes=Router(),availabilityRoutes=Router();
+availabilityRoutes.get("/",validate(availabilitySchema),a(c.availability));
+appointmentRoutes.use(authenticate);appointmentRoutes.post("/",authorize("CUSTOMER"),validate(createAppointmentSchema),a(c.create));appointmentRoutes.get("/:id",validate(appointmentIdSchema),a(c.get));appointmentRoutes.patch("/:id/reschedule",validate(rescheduleSchema),a(c.reschedule));appointmentRoutes.delete("/:id",validate(cancelSchema),a(c.cancel));
+export const professionalAgendaRoutes=Router();professionalAgendaRoutes.get("/:id/agenda",authenticate,authorize("BARBER","ADMIN"),authorizeStaffOwner,validate(agendaSchema),a(c.agenda));
