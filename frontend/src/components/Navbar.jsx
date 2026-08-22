@@ -30,7 +30,7 @@ export default function Navbar() {
             />
           </span>
           <span className="font-display text-xl uppercase tracking-wider sm:text-2xl">
-            X Studio Barber
+            Studio Barber
           </span>
         </Link>
         <nav
